@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ int main()
     string name2 = "Esa";
     int age2 = 41;
     string line = "";
+    vector<int> vector;
 
     fstream file;
 
@@ -19,7 +21,6 @@ int main()
     if(file.is_open())
     {
         file << name1 << "," << age1 << "\n";
-        file << name2 << "," << age2 << "\n";
         file.close();
     }
 
@@ -27,13 +28,35 @@ int main()
 
     if (file.is_open())
     {
-        while(getline(file, line))
+        getline(file, line, ',');
+        string name = line;
+
+        cout << line << endl;
+
+        line = "";
+        
+        getline(file, line, ',');
+        string age = line;
+        cout << age;
+        int age3 = 0;
+
+        age3 = stoi(age);
+
+        cout << age3 << endl;
+
+        if(age3 > 2)
         {
-            string name;
-            int age;
+            cout << age3 << " is greater than 2" <<endl;
         }
+        
+
+        
+
+      
     }
 
+    
 
+    system("pause");
     return 0;
 }
